@@ -55,6 +55,12 @@ if [ -n "$NPM_MIRROR" ]; then
 	npm config set registry $NPM_MIRROR
 fi
 
+# Set the npm _auth using the base64 encoded auth token
+if [ -n "$NPM_AUTH" ]; then
+	npm config set _auth $NPM_AUTH
+	npm config set always-auth true
+fi
+
 # Set the DEV_MODE to false by default.
 if [ -z "$DEV_MODE" ]; then
   export DEV_MODE=false
